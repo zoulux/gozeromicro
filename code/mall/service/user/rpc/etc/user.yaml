@@ -21,3 +21,8 @@ Redis: # 指定 Redis 服务
   Key: rpc:auth:user     # 指定 Key 应为 hash 类型
   Host: redis:6379
   Type: node
+
+Prometheus:
+  Host: 0.0.0.0
+  Port: 9090
+  Path: /metrics
