@@ -156,3 +156,145 @@ services:
     networks:
       - backend
     restart: always
+
+#  orderapi:
+#    build:
+#      context: ./golang                  # 指定构建使用的 Dockerfile 文件
+#    environment: # 设置环境变量
+#      - TZ=${TZ}
+#      - GO111MODULE=on
+#    volumes: # 设置挂载目录
+#      - ${CODE_PATH_HOST}:/usr/src/code  # 引用 .env 配置中 CODE_PATH_HOST 变量，将宿主机上代码存放的目录挂载到容器中 /usr/src/code 目录
+#    ports: # 设置端口映射
+#      - "8002:8002"
+#    working_dir: /usr/src/code/service/order/api
+#    command: [ "go", "run", "-x","order.go" ]
+#    depends_on:
+#      - orderrpc
+#    networks:
+#      - backend
+#    restart: always                      # 指定容器退出后的重启策略为始终重启
+#
+#  orderrpc:
+#    build:
+#      context: ./golang                  # 指定构建使用的 Dockerfile 文件
+#    environment: # 设置环境变量
+#      - TZ=${TZ}
+#      - GO111MODULE=on
+#    volumes: # 设置挂载目录
+#      - ${CODE_PATH_HOST}:/usr/src/code  # 引用 .env 配置中 CODE_PATH_HOST 变量，将宿主机上代码存放的目录挂载到容器中 /usr/src/code 目录
+#    ports: # 设置端口映射
+#      - "9002:9002"
+#    working_dir: /usr/src/code/service/order/rpc
+#    command: [ "go", "run", "-x","order.go" ]
+#    depends_on:
+#      - userrpc
+#      - productrpc
+#    networks:
+#      - backend
+#    restart: always                      # 指定容器退出后的重启策略为始终重启
+#
+#  payapi:
+#    build:
+#      context: ./golang                  # 指定构建使用的 Dockerfile 文件
+#    environment: # 设置环境变量
+#      - TZ=${TZ}
+#      - GO111MODULE=on
+#    volumes: # 设置挂载目录
+#      - ${CODE_PATH_HOST}:/usr/src/code  # 引用 .env 配置中 CODE_PATH_HOST 变量，将宿主机上代码存放的目录挂载到容器中 /usr/src/code 目录
+#    ports: # 设置端口映射
+#      - "8003:8003"
+#    working_dir: /usr/src/code/service/pay/api
+#    command: [ "go", "run","-x", "pay.go" ]
+#    depends_on:
+#      - payrpc
+#    networks:
+#      - backend
+#    restart: always                      # 指定容器退出后的重启策略为始终重启
+#
+#  payrpc:
+#    build:
+#      context: ./golang                  # 指定构建使用的 Dockerfile 文件
+#    environment: # 设置环境变量
+#      - TZ=${TZ}
+#      - GO111MODULE=on
+#    volumes: # 设置挂载目录
+#      - ${CODE_PATH_HOST}:/usr/src/code  # 引用 .env 配置中 CODE_PATH_HOST 变量，将宿主机上代码存放的目录挂载到容器中 /usr/src/code 目录
+#    ports: # 设置端口映射
+#      - "9003:9003"
+#    working_dir: /usr/src/code/service/pay/rpc
+#    command: [ "go", "run", "-x","pay.go" ]
+#    depends_on:
+#      - userrpc
+#      - orderrpc
+#    networks:
+#      - backend
+#    restart: always                      # 指定容器退出后的重启策略为始终重启
+#
+#  productapi:
+#    build:
+#      context: ./golang                  # 指定构建使用的 Dockerfile 文件
+#    environment: # 设置环境变量
+#      - TZ=${TZ}
+#      - GO111MODULE=on
+#    volumes: # 设置挂载目录
+#      - ${CODE_PATH_HOST}:/usr/src/code  # 引用 .env 配置中 CODE_PATH_HOST 变量，将宿主机上代码存放的目录挂载到容器中 /usr/src/code 目录
+#    ports: # 设置端口映射
+#      - "8001:8001"
+#    working_dir: /usr/src/code/service/product/api
+#    command: [ "go", "run","-x", "product.go" ]
+#    depends_on:
+#      - productrpc
+#    networks:
+#      - backend
+#    restart: always                      # 指定容器退出后的重启策略为始终重启
+#
+#  productrpc:
+#    build:
+#      context: ./golang                  # 指定构建使用的 Dockerfile 文件
+#    environment: # 设置环境变量
+#      - TZ=${TZ}
+#      - GO111MODULE=on
+#    volumes: # 设置挂载目录
+#      - ${CODE_PATH_HOST}:/usr/src/code  # 引用 .env 配置中 CODE_PATH_HOST 变量，将宿主机上代码存放的目录挂载到容器中 /usr/src/code 目录
+#    ports: # 设置端口映射
+#      - "9001:9001"
+#    working_dir: /usr/src/code/service/product/rpc
+#    command: [ "go", "run","-x", "product.go" ]
+#    networks:
+#      - backend
+#    restart: always                      # 指定容器退出后的重启策略为始终重启
+#
+#  userapi:
+#    build:
+#      context: ./golang                  # 指定构建使用的 Dockerfile 文件
+#    environment: # 设置环境变量
+#      - TZ=${TZ}
+#      - GO111MODULE=on
+#    volumes: # 设置挂载目录
+#      - ${CODE_PATH_HOST}:/usr/src/code  # 引用 .env 配置中 CODE_PATH_HOST 变量，将宿主机上代码存放的目录挂载到容器中 /usr/src/code 目录
+#    ports: # 设置端口映射
+#      - "8000:8000"
+#    working_dir: /usr/src/code/service/user/api
+#    command: [ "go", "run","-x", "user.go" ]
+#    depends_on:
+#      - userrpc
+#    networks:
+#      - backend
+#    restart: always                      # 指定容器退出后的重启策略为始终重启
+#
+#  userrpc:
+#    build:
+#      context: ./golang                  # 指定构建使用的 Dockerfile 文件
+#    environment: # 设置环境变量
+#      - TZ=${TZ}
+#      - GO111MODULE=on
+#    volumes: # 设置挂载目录
+#      - ${CODE_PATH_HOST}:/usr/src/code  # 引用 .env 配置中 CODE_PATH_HOST 变量，将宿主机上代码存放的目录挂载到容器中 /usr/src/code 目录
+#    ports: # 设置端口映射
+#      - "9000:9000"
+#    working_dir: /usr/src/code/service/user/rpc
+#    command: [ "go", "run","-x", "user.go" ]
+#    networks:
+#      - backend
+#    restart: always                      # 指定容器退出后的重启策略为始终重启

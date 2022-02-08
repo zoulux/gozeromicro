@@ -43,6 +43,8 @@ RUN apt-get clean && \
 
 # 设置工作目录
 WORKDIR /usr/src/code
+COPY . .
+RUN go mod download
 
 EXPOSE 8000
 EXPOSE 8001
